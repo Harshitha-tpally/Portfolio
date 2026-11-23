@@ -1,0 +1,345 @@
+/*
+ * Tailwind v4 entry: config lives here, with no tailwind.config.js or PostCSS plugin.
+ * Keep every @import in this top block. Web fonts load via <link> in src/routes/__root.tsx.
+ */
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Design system: "Navy & Cream" — editorial, warm, playful.
+ * Navy carries the ink, cream carries the paper. Sky and sun are tiny sparks only.
+ */
+
+@theme inline {
+  --font-display: "Fraunces", "Times New Roman", serif;
+  --font-sans: "Schibsted Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-hand: "Caveat", "Segoe Print", cursive;
+  --font-mono: "DM Mono", ui-monospace, monospace;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Brand palette */
+  --color-navy: var(--navy);
+  --color-navy-deep: var(--navy-deep);
+  --color-navy-soft: var(--navy-soft);
+  --color-cream: var(--cream);
+  --color-cream-deep: var(--cream-deep);
+  --color-paper: var(--paper);
+  --color-sky: var(--sky);
+  --color-sun: var(--sun);
+
+  --shadow-pop: var(--shadow-pop);
+  --shadow-pop-sm: var(--shadow-pop-sm);
+  --shadow-pop-cream: var(--shadow-pop-cream);
+  --shadow-soft: var(--shadow-soft);
+
+  --animate-marquee: marquee 38s linear infinite;
+  --animate-marquee-reverse: marquee 44s linear infinite reverse;
+  --animate-spin-slow: spin 22s linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-orbit: spin 14s linear infinite;
+  --animate-twinkle: twinkle 2.8s ease-in-out infinite;
+  --animate-wiggle: wiggle 0.5s ease-in-out;
+}
+
+:root {
+  --radius: 1rem;
+
+  --navy: oklch(0.26 0.075 262);
+  --navy-deep: oklch(0.2 0.06 263);
+  --navy-soft: oklch(0.44 0.075 258);
+  --cream: oklch(0.962 0.024 84);
+  --cream-deep: oklch(0.91 0.045 82);
+  --paper: oklch(0.985 0.012 86);
+  --sky: oklch(0.83 0.06 240);
+  --sun: oklch(0.82 0.135 76);
+
+  --background: var(--cream);
+  --foreground: var(--navy);
+  --card: var(--paper);
+  --card-foreground: var(--navy);
+  --popover: var(--paper);
+  --popover-foreground: var(--navy);
+  --primary: var(--navy);
+  --primary-foreground: var(--cream);
+  --secondary: var(--cream-deep);
+  --secondary-foreground: var(--navy);
+  --muted: oklch(0.93 0.03 84);
+  --muted-foreground: oklch(0.45 0.05 260);
+  --accent: var(--sky);
+  --accent-foreground: var(--navy-deep);
+  --destructive: oklch(0.55 0.2 27);
+  --destructive-foreground: var(--cream);
+  --border: oklch(0.26 0.075 262 / 14%);
+  --input: oklch(0.26 0.075 262 / 22%);
+  --ring: var(--navy-soft);
+
+  --chart-1: var(--navy);
+  --chart-2: var(--sky);
+  --chart-3: var(--sun);
+  --chart-4: var(--navy-soft);
+  --chart-5: var(--cream-deep);
+  --sidebar: var(--paper);
+  --sidebar-foreground: var(--navy);
+  --sidebar-primary: var(--navy);
+  --sidebar-primary-foreground: var(--cream);
+  --sidebar-accent: var(--cream-deep);
+  --sidebar-accent-foreground: var(--navy);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--ring);
+
+  --shadow-pop: 6px 6px 0 0 var(--navy);
+  --shadow-pop-sm: 3px 3px 0 0 var(--navy);
+  --shadow-pop-cream: 6px 6px 0 0 var(--cream);
+  --shadow-soft: 0 24px 60px -24px oklch(0.26 0.075 262 / 35%);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+    color-scheme: light;
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "ss02";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-variation-settings: "SOFT" 100, "WONK" 0, "opsz" 96;
+    letter-spacing: -0.025em;
+  }
+  ::selection {
+    background: var(--navy);
+    color: var(--cream);
+  }
+  :focus-visible {
+    outline: 2px solid var(--navy-soft);
+    outline-offset: 3px;
+  }
+}
+
+/* Wonky italic: the lively serif accent used on key words */
+@utility italic-wonk {
+  font-style: italic;
+  font-variation-settings: "SOFT" 100, "WONK" 1, "opsz" 144;
+}
+
+/* Hand-drawn marker highlight behind a phrase */
+@utility marker {
+  background-image: linear-gradient(
+    100deg,
+    transparent 2%,
+    color-mix(in oklab, var(--sky) 85%, transparent) 4%,
+    color-mix(in oklab, var(--sky) 70%, transparent) 96%,
+    transparent 98%
+  );
+  background-size: 100% 42%;
+  background-repeat: no-repeat;
+  background-position: 0 88%;
+  padding-inline: 0.15em;
+  box-decoration-break: clone;
+}
+
+@utility marker-sun {
+  background-image: linear-gradient(
+    100deg,
+    transparent 2%,
+    color-mix(in oklab, var(--sun) 70%, transparent) 4%,
+    color-mix(in oklab, var(--sun) 55%, transparent) 96%,
+    transparent 98%
+  );
+  background-size: 100% 40%;
+  background-repeat: no-repeat;
+  background-position: 0 90%;
+  padding-inline: 0.12em;
+  box-decoration-break: clone;
+}
+
+/* Outlined display text */
+@utility text-outline {
+  color: transparent;
+  -webkit-text-stroke: 1.5px currentColor;
+}
+
+/* Paper grain overlay */
+@utility grain {
+  position: relative;
+  isolation: isolate;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.09;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    border-radius: inherit;
+  }
+}
+
+@utility pattern-dots {
+  background-image: radial-gradient(color-mix(in oklab, currentColor 35%, transparent) 1.2px, transparent 1.4px);
+  background-size: 16px 16px;
+}
+
+@utility pattern-grid {
+  background-image:
+    linear-gradient(color-mix(in oklab, currentColor 18%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in oklab, currentColor 18%, transparent) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+@utility pattern-stripes {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    color-mix(in oklab, currentColor 20%, transparent) 0 2px,
+    transparent 2px 12px
+  );
+}
+
+/* Card with a crisp navy outline that pops on hover */
+@utility pop-card {
+  background: var(--paper);
+  border: 1.5px solid var(--navy);
+  border-radius: 1.75rem;
+  transition:
+    transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+  &:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: var(--shadow-pop);
+  }
+}
+
+/* Form field on cream/paper */
+@utility field {
+  width: 100%;
+  border-radius: 0.9rem;
+  border: 1.5px solid color-mix(in oklab, var(--navy) 20%, transparent);
+  background: var(--paper);
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  color: var(--navy);
+  outline: none;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+  &::placeholder {
+    color: color-mix(in oklab, var(--navy) 40%, transparent);
+  }
+  &:focus {
+    border-color: var(--navy);
+    box-shadow: var(--shadow-pop-sm);
+  }
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(var(--r, 0deg));
+  }
+  50% {
+    transform: translateY(-10px) rotate(var(--r, 0deg));
+  }
+}
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    opacity: 0.45;
+    transform: scale(0.7) rotate(45deg);
+  }
+}
+@keyframes wiggle {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-4deg);
+  }
+  75% {
+    transform: rotate(4deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+body.drag-selecting {
+  user-select: none;
+  -webkit-user-select: none;
+  cursor: crosshair;
+}
